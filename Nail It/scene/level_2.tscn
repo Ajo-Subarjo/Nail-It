@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cpubkk42800j4"]
+
+[ext_resource type="Script" uid="uid://enbfh5j17cm3" path="res://script/level_2.gd" id="1_76tbi"]
+
+[node name="level_2" type="Node2D" unique_id=790179778]
+script = ExtResource("1_76tbi")
+img_size = Vector2i(1152, 648)
+brush_size = 29
+
+[node name="Paint" type="Sprite2D" parent="." unique_id=232908745]
+position = Vector2(576, 324)

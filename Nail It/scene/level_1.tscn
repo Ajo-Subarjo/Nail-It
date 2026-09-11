@@ -1,0 +1,198 @@
+[gd_scene format=3 uid="uid://dafapidoox082"]
+
+[ext_resource type="Script" uid="uid://c6cg3mw4swyuo" path="res://script/level_1.gd" id="1_rpurj"]
+[ext_resource type="Texture2D" uid="uid://cb3lekryiehe4" path="res://icon.svg" id="2_3flxk"]
+[ext_resource type="Script" uid="uid://5y6tba3ncqop" path="res://script/nail.gd" id="2_xesoj"]
+[ext_resource type="Script" uid="uid://51oh1mjy13j7" path="res://script/hammer.gd" id="3_3flxk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3gf8"]
+size = Vector2(27, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53ndp"]
+size = Vector2(20.5, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xesoj"]
+size = Vector2(132, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pr35p"]
+size = Vector2(56, 625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70cbr"]
+size = Vector2(1105, 50.5)
+
+[node name="Level 1" type="Node2D" unique_id=2008454539]
+script = ExtResource("1_rpurj")
+
+[node name="nail group" type="Node2D" parent="." unique_id=323649614]
+
+[node name="Nail" type="Node2D" parent="nail group" unique_id=2026541930]
+position = Vector2(215, 150)
+script = ExtResource("2_xesoj")
+
+[node name="Icon" type="Sprite2D" parent="nail group/Nail" unique_id=1673184896]
+scale = Vector2(1.109375, 0.12304686)
+texture = ExtResource("2_3flxk")
+
+[node name="Icon2" type="Sprite2D" parent="nail group/Nail" unique_id=805324786]
+position = Vector2(68, -1)
+scale = Vector2(0.14843753, 0.3828124)
+texture = ExtResource("2_3flxk")
+
+[node name="Hitbox" type="Area2D" parent="nail group/Nail" unique_id=1506098364]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nail group/Nail/Hitbox" unique_id=1412390772]
+position = Vector2(86, -1)
+shape = SubResource("RectangleShape2D_u3gf8")
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="nail group/Nail" unique_id=124681088]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nail group/Nail/StaticBody2D" unique_id=774811292]
+position = Vector2(68, -1)
+shape = SubResource("RectangleShape2D_53ndp")
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="Nail2" type="Node2D" parent="nail group" unique_id=380787008]
+position = Vector2(215, 250)
+script = ExtResource("2_xesoj")
+
+[node name="Icon" type="Sprite2D" parent="nail group/Nail2" unique_id=1605564113]
+scale = Vector2(1.109375, 0.12304686)
+texture = ExtResource("2_3flxk")
+
+[node name="Icon2" type="Sprite2D" parent="nail group/Nail2" unique_id=1701605073]
+position = Vector2(68, -1)
+scale = Vector2(0.14843753, 0.3828124)
+texture = ExtResource("2_3flxk")
+
+[node name="Hitbox" type="Area2D" parent="nail group/Nail2" unique_id=1504937222]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nail group/Nail2/Hitbox" unique_id=295210431]
+position = Vector2(86, -1)
+shape = SubResource("RectangleShape2D_u3gf8")
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="nail group/Nail2" unique_id=1291514844]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nail group/Nail2/StaticBody2D" unique_id=596042858]
+position = Vector2(68, -1)
+shape = SubResource("RectangleShape2D_53ndp")
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="Nail3" type="Node2D" parent="nail group" unique_id=1547068813]
+position = Vector2(215, 350)
+script = ExtResource("2_xesoj")
+
+[node name="Icon" type="Sprite2D" parent="nail group/Nail3" unique_id=2104707308]
+scale = Vector2(1.109375, 0.12304686)
+texture = ExtResource("2_3flxk")
+
+[node name="Icon2" type="Sprite2D" parent="nail group/Nail3" unique_id=130799393]
+position = Vector2(68, -1)
+scale = Vector2(0.14843753, 0.3828124)
+texture = ExtResource("2_3flxk")
+
+[node name="Hitbox" type="Area2D" parent="nail group/Nail3" unique_id=1890047997]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nail group/Nail3/Hitbox" unique_id=1754236244]
+position = Vector2(86, -1)
+shape = SubResource("RectangleShape2D_u3gf8")
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="nail group/Nail3" unique_id=431787299]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nail group/Nail3/StaticBody2D" unique_id=1225374616]
+position = Vector2(68, -1)
+shape = SubResource("RectangleShape2D_53ndp")
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="Nail4" type="Node2D" parent="nail group" unique_id=1012434039]
+position = Vector2(215, 450)
+script = ExtResource("2_xesoj")
+
+[node name="Icon" type="Sprite2D" parent="nail group/Nail4" unique_id=1202862717]
+scale = Vector2(1.109375, 0.12304686)
+texture = ExtResource("2_3flxk")
+
+[node name="Icon2" type="Sprite2D" parent="nail group/Nail4" unique_id=378724923]
+position = Vector2(68, -1)
+scale = Vector2(0.14843753, 0.3828124)
+texture = ExtResource("2_3flxk")
+
+[node name="Hitbox" type="Area2D" parent="nail group/Nail4" unique_id=1042699042]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nail group/Nail4/Hitbox" unique_id=1094025582]
+position = Vector2(86, -1)
+shape = SubResource("RectangleShape2D_u3gf8")
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="nail group/Nail4" unique_id=50186697]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nail group/Nail4/StaticBody2D" unique_id=1187773618]
+position = Vector2(68, -1)
+shape = SubResource("RectangleShape2D_53ndp")
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="Hammer" type="CharacterBody2D" parent="." unique_id=68381242 node_paths=PackedStringArray("label")]
+position = Vector2(505, 248)
+script = ExtResource("3_3flxk")
+label = NodePath("Label")
+
+[node name="Icon2" type="Sprite2D" parent="Hammer" unique_id=1262091202]
+position = Vector2(0, 52.999992)
+scale = Vector2(0.1093749, 0.85156214)
+texture = ExtResource("2_3flxk")
+
+[node name="Icon" type="Sprite2D" parent="Hammer" unique_id=913907292]
+position = Vector2(0, 4)
+scale = Vector2(0.9296875, 0.359375)
+texture = ExtResource("2_3flxk")
+
+[node name="Label" type="Label" parent="Hammer" unique_id=664521887]
+offset_left = -19.0
+offset_top = -51.0
+offset_right = 21.0
+offset_bottom = -28.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Hammer" unique_id=936906265]
+offset_left = -62.0
+offset_top = -21.0
+offset_right = 61.0
+offset_bottom = 29.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hammer" unique_id=1404206725]
+position = Vector2(1, 4.5)
+shape = SubResource("RectangleShape2D_xesoj")
+
+[node name="wall" type="StaticBody2D" parent="." unique_id=1391581708]
+position = Vector2(148, 244)
+
+[node name="Icon" type="Sprite2D" parent="wall" unique_id=2072512228]
+position = Vector2(-5.9604645e-06, 77.50001)
+scale = Vector2(0.4843749, 4.8203125)
+texture = ExtResource("2_3flxk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=919128659]
+position = Vector2(-1, 80.5)
+shape = SubResource("RectangleShape2D_pr35p")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="wall" unique_id=1279952506]
+position = Vector2(1011, 65)
+shape = SubResource("RectangleShape2D_pr35p")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="wall" unique_id=104637752]
+position = Vector2(499.5, 387.25)
+shape = SubResource("RectangleShape2D_70cbr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="wall" unique_id=1840117699]
+position = Vector2(503, -250)
+shape = SubResource("RectangleShape2D_70cbr")
+
+[connection signal="body_entered" from="nail group/Nail/Hitbox" to="nail group/Nail" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="nail group/Nail2/Hitbox" to="nail group/Nail2" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="nail group/Nail3/Hitbox" to="nail group/Nail3" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="nail group/Nail4/Hitbox" to="nail group/Nail4" method="_on_hitbox_body_entered"]
+[connection signal="button_down" from="Hammer/Button" to="Hammer" method="_on_hammer_down"]
+[connection signal="button_up" from="Hammer/Button" to="Hammer" method="_on_hammer_up"]
