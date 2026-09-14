@@ -4,6 +4,9 @@ A collection of small, fast-paced mini-games inspired by games like **WarioWare*
 
 The goal is simple: complete each challenge as quickly and accurately as possible.
 
+![Try IT In Here](https://ajo-subarjo.itch.io/build-it)
+
+
 ## Mini-Games
 
 * **Hammer** - Hit the nails before time runs out.
