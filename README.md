@@ -22,6 +22,7 @@ The goal is simple: complete each challenge as quickly and accurately as possibl
 
 * **Godot**
 * **GDScript**
+* **Blender**
 
 This project is still being developed, and new mini-games and features may be added over time.
 
