@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b4tqryn8kd5ie" path="res://sprite/painter roll.png" id="7_ds6wj"]
 [ext_resource type="Script" uid="uid://c72mw3aitqcc5" path="res://script/failed_scene.gd" id="9_txbx5"]
 [ext_resource type="Texture2D" uid="uid://0r5o3gguc28g" path="res://sprite/hammer.png" id="10_lh1ov"]
+[ext_resource type="VideoStream" uid="uid://dyn5kopoacvwy" path="res://video/level 2.ogv" id="11_lh1ov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3gf8"]
 size = Vector2(164.875, 198.5)
@@ -379,7 +380,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_tlh70"]
 resource_name = "WIN"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -627,6 +628,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("7_ds6wj")
 
 [node name="Label" type="Label" parent="painter" unique_id=621442348]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
@@ -924,7 +926,6 @@ root_node = NodePath("../Failed")
 libraries/ = SubResource("AnimationLibrary_txbx5")
 
 [node name="tutorial" type="Control" parent="." unique_id=1928652356]
-visible = false
 z_index = 3
 layout_mode = 3
 anchors_preset = 0
@@ -978,7 +979,7 @@ theme_override_colors/font_color = Color(0.37683544, 0.6609437, 0.77802545, 1)
 theme_override_colors/font_outline_color = Color(0.21451995, 0.3526927, 0.4309614, 1)
 theme_override_constants/outline_size = 50
 theme_override_font_sizes/font_size = 51
-text = "PAINT IT! 🎨"
+text = "PAINT IT! "
 
 [node name="Label3" type="Label" parent="tutorial" unique_id=1708882209]
 layout_mode = 0
@@ -994,29 +995,6 @@ theme_override_font_sizes/font_size = 24
 text = "Cover the required area before
 Time runs out!"
 
-[node name="health_group" type="Control" parent="tutorial" unique_id=250318888]
-anchors_preset = 0
-offset_right = 1158.0
-offset_bottom = 610.0
-
-[node name="Hammer" type="Sprite2D" parent="tutorial/health_group" unique_id=1089301200]
-z_index = 2
-position = Vector2(194, 236)
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("10_lh1ov")
-
-[node name="Hammer2" type="Sprite2D" parent="tutorial/health_group" unique_id=1702150754]
-z_index = 2
-position = Vector2(539, 247)
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("10_lh1ov")
-
-[node name="Hammer3" type="Sprite2D" parent="tutorial/health_group" unique_id=435739287]
-z_index = 2
-position = Vector2(375, 245)
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("10_lh1ov")
-
 [node name="Button" type="Button" parent="tutorial" unique_id=996081027]
 layout_mode = 0
 offset_left = 150.0
@@ -1031,6 +1009,18 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lh1ov")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qyxx2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_irr0h")
 text = "START"
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="tutorial" unique_id=62517199]
+z_index = 3
+layout_mode = 0
+offset_left = 106.0
+offset_top = 69.0
+offset_right = 1386.0
+offset_bottom = 789.0
+scale = Vector2(0.405, 0.405)
+stream = ExtResource("11_lh1ov")
+autoplay = true
+loop = true
 
 [connection signal="body_entered" from="Refill" to="." method="_on_refill_body_entered"]
 [connection signal="button_down" from="painter/Button" to="painter" method="_on_painter_down"]
