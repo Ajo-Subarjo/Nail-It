@@ -11,7 +11,9 @@ var nail_count = 0
 
 
 func _ready() -> void:
-	$tutorial.show()
+	#$tutorial.show()
+	$Camera.shake(1)
+	Audiomanager.setup_audio()
 	for child in nail_group.get_children():
 		child.nail_finish.connect(_on_nail_finish)
 
@@ -21,8 +23,7 @@ func _on_nail_finish():
 	if nail_count >= 4:
 		print("Done")
 		on_finish()
-		$scene/conditional_screen/AnimationPlayer.play("WIN")
-		$scene/Timer.start(5)
+
 
 func on_finish():
 	var loader: AsyncScene = AsyncScene.new(scene_path,AsyncScene.LoadingOperation.Replace, self)
@@ -44,4 +45,3 @@ func back_main_menu():
 
 func _on_start() -> void:
 	$tutorial.hide()
-	$scene/Timer.start(time)

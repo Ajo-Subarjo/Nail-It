@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dvvqud6062tle"]
+
+[ext_resource type="Script" uid="uid://1u0nx0thctkt" path="res://script/component/audiomanager.gd" id="1_eu2yd"]
+[ext_resource type="AudioStream" uid="uid://bvgutebr61ays" path="res://SFX/ui/hover.ogg" id="2_mf3bl"]
+[ext_resource type="AudioStream" uid="uid://ddcgaju2djmnw" path="res://SFX/ui/click.ogg" id="3_8kcrs"]
+
+[node name="Audio" type="Node" unique_id=24209023]
+script = ExtResource("1_eu2yd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2017911092]
+
+[node name="Hover" type="AudioStreamPlayer" parent="." unique_id=695628908]
+stream = ExtResource("2_mf3bl")
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=1758860628]
+stream = ExtResource("3_8kcrs")

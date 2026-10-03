@@ -5,6 +5,7 @@ var finish = false
 
 signal nail_finish
 
+@onready var camera = $"../../Camera"
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 
@@ -12,6 +13,8 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		return
 
 	if body.power >= 330 and !finish:
+		camera.shake(5)
+		
 		hit+= 1
 		position.x -= 20
 		#print("hammer bonk", body.power)

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://u0svlgkbwote"]
+
+[ext_resource type="Script" uid="uid://b0pjjnxhqjx4h" path="res://script/component/camera.gd" id="1_bmrar"]
+
+[node name="Camera" type="Node2D" unique_id=410041547]
+script = ExtResource("1_bmrar")
+
+[node name="camera 2d" type="Camera2D" parent="." unique_id=1757026362]
+position = Vector2(576, 324)

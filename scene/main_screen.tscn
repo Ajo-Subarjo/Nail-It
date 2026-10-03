@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b5rgigr2en65g" path="res://sprite/blueprint roll.png" id="3_bor6b"]
 [ext_resource type="Texture2D" uid="uid://cvq4i0sv4tkci" path="res://sprite/nail.png" id="3_ckf3p"]
 [ext_resource type="Texture2D" uid="uid://cou24mjnbjx6o" path="res://sprite/pen.png" id="4_n877d"]
+[ext_resource type="PackedScene" uid="uid://u0svlgkbwote" path="res://scene/component/Camera.tscn" id="7_06ml0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmo0d"]
 bg_color = Color(0.35929307, 0.64774424, 0.73244905, 0.7529412)
@@ -86,7 +87,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Button" type="Button" parent="Control/VBoxContainer" unique_id=1089809705]
+[node name="Button" type="Button" parent="Control/VBoxContainer" unique_id=1089809705 groups=["Button"]]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
@@ -95,7 +96,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_n877d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bor6b")
 text = "Play"
 
-[node name="Button2" type="Button" parent="Control/VBoxContainer" unique_id=840257502]
+[node name="Button2" type="Button" parent="Control/VBoxContainer" unique_id=840257502 groups=["Button"]]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
@@ -104,7 +105,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_06ml0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bor6b")
 text = "Setting"
 
-[node name="Button3" type="Button" parent="Control/VBoxContainer" unique_id=142230758]
+[node name="Button3" type="Button" parent="Control/VBoxContainer" unique_id=142230758 groups=["Button"]]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
@@ -119,40 +120,49 @@ position = Vector2(1126, 326.99997)
 scale = Vector2(0.405, 0.405)
 texture = ExtResource("3_bor6b")
 
-[node name="Hammer" type="Sprite2D" parent="." unique_id=1754385573]
+[node name="Control2" type="Control" parent="." unique_id=1753746312]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Hammer" type="Sprite2D" parent="Control2" unique_id=1754385573]
 position = Vector2(787.00006, 215.99997)
-rotation = -0.27052602
+rotation = -0.27052605
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_ckf3p")
 
-[node name="Nail" type="Sprite2D" parent="." unique_id=1145577908]
+[node name="Nail" type="Sprite2D" parent="Control2" unique_id=1145577908]
 position = Vector2(846, 493.00003)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_ckf3p")
 
-[node name="Nail2" type="Sprite2D" parent="." unique_id=1753192329]
+[node name="Nail2" type="Sprite2D" parent="Control2" unique_id=1753192329]
 position = Vector2(808, 515)
 rotation = -2.4675043
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_ckf3p")
 
-[node name="Nail3" type="Sprite2D" parent="." unique_id=741246778]
+[node name="Nail3" type="Sprite2D" parent="Control2" unique_id=741246778]
 position = Vector2(892.99994, 516)
-rotation = -0.77440906
-scale = Vector2(0.05, 0.05)
+rotation = -0.7744091
+scale = Vector2(0.050000004, 0.050000004)
 texture = ExtResource("3_ckf3p")
 
-[node name="Nail4" type="Sprite2D" parent="." unique_id=93055773]
+[node name="Nail4" type="Sprite2D" parent="Control2" unique_id=93055773]
 position = Vector2(853, 561.00006)
 rotation = 0.74507785
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.050000004, 0.050000004)
 texture = ExtResource("3_ckf3p")
 
-[node name="Pen" type="Sprite2D" parent="." unique_id=493402311]
+[node name="Pen" type="Sprite2D" parent="Control2" unique_id=493402311]
 position = Vector2(596, 445.99997)
 rotation = 0.58247215
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.15000002, 0.15000002)
 texture = ExtResource("4_n877d")
 
+[node name="Camera" parent="." unique_id=410041547 instance=ExtResource("7_06ml0")]
+
 [connection signal="pressed" from="Control/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
