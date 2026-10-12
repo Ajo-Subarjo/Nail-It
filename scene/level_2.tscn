@@ -21,7 +21,7 @@ shader_parameter/saturation = 1.0
 size = Vector2(72, 49.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pr35p"]
-size = Vector2(41, 1279.5)
+size = Vector2(26.499987, 1279.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txbx5"]
 bg_color = Color(0.36910343, 0.48677206, 0.50707656, 1)
@@ -56,13 +56,13 @@ script = ExtResource("1_76tbi")
 
 [node name="WallPaint" type="Sprite2D" parent="." unique_id=1089943906]
 z_index = -1
-position = Vector2(584.5, 329.5)
-scale = Vector2(0.6119792, 0.6175926)
+position = Vector2(584.5, 346.49997)
+scale = Vector2(0.6119792, 0.5861111)
 texture = ExtResource("2_pjrwy")
 
 [node name="Paint" type="Sprite2D" parent="." unique_id=1928400439]
-position = Vector2(459.5, 329.5)
-scale = Vector2(0.6119792, 0.6175926)
+position = Vector2(459.5, 346.49997)
+scale = Vector2(0.6119792, 0.5861111)
 texture = ExtResource("2_pjrwy")
 region_enabled = true
 region_rect = Rect2(0, 0, 1505.4596, 1080)
@@ -131,7 +131,7 @@ position = Vector2(1198, 330)
 shape = SubResource("RectangleShape2D_pr35p")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1810196993]
-position = Vector2(601.25, -30.999987)
+position = Vector2(601.25, 16.750008)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_pr35p")
 
@@ -238,7 +238,15 @@ stream = ExtResource("11_lh1ov")
 autoplay = true
 loop = true
 
+[node name="debug" type="Button" parent="." unique_id=617904425]
+offset_left = 677.0
+offset_top = 159.0
+offset_right = 778.0
+offset_bottom = 195.0
+text = "next"
+
 [connection signal="body_entered" from="Refill" to="." method="_on_refill_body_entered"]
 [connection signal="button_down" from="painter/Button" to="painter" method="_on_painter_down"]
 [connection signal="button_up" from="painter/Button" to="painter" method="_on_painter_up"]
 [connection signal="pressed" from="tutorial/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="debug" to="." method="_on_debug_pressed"]

@@ -15,7 +15,7 @@ func _process(delta):
 	elif shake_strength > 0.1 and one_time:
 		shake_strength = lerp(shake_strength, 0.0, shake_fade * delta)
 		shake_camera()
-		print(camera.offset)
+		#print(camera.offset)
 	else:
 		one_time = false
 		camera.offset = Vector2.ZERO

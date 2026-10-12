@@ -6,10 +6,8 @@ extends Node2D
 
 
 func _on_button_pressed() -> void:
-	var loader: AsyncScene = AsyncScene.new(scene_path,AsyncScene.LoadingOperation.ReplaceImmediate, self)
-	loader.with_transition(AsyncScene.TransitionType.WipeLeft, 1.2, Color.from_hsv(0.589963, 0.614607, 0.474517, 1.0))
-	loader.OnComplete.connect(on_load_complete)
-	loader.start()
+	GameManager.level = 1
+	GameManager.change_level()
 
 
 func _on_button_3_pressed() -> void:

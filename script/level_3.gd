@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var heat_curve : Curve
+@export var gradient: Gradient
+
 
 @onready var chainsaw = $Chainsaw
 @onready var heatbar = $Heatbar
@@ -23,6 +25,8 @@ var smoke_alpha := 0.0
 
 func _ready() -> void:
 	$Chainsaw.play("idle")
+	await get_tree().create_timer(1).timeout
+	GameManager.paused = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -57,14 +61,13 @@ func _process(delta: float) -> void:
 		#print(progress_percentage)
 		$Progress.value = progress_percentage
 
-
 	if !trigger and heat >= heatbar.min_value and !overheat:
 		heat_progress -= delta
 		heat_progress = clamp(heat_progress, 0.0, 3.0)
 		var t = heat_progress / 3.0
 		heat = heat_curve.sample(t) * 100.0
 
-	if progress_percentage >= 90:
+	if progress_percentage >= 90 and !finish:
 		finish = true
 		trigger = false
 
@@ -75,6 +78,11 @@ func _process(delta: float) -> void:
 		#await get_tree().create_timer(2).timeout
 		$LogLeft.hide()
 		$LogRight.play("finish")
+		await get_tree().create_timer(1).timeout
+		GameManager.paused = true
+		GameManager.level = 4
+		GameManager.update_time()
+		GameManager.change_level()
 
 
 	update_log(delta)
@@ -116,8 +124,17 @@ func update_log(delta):
 
 	var frame = int(progress_percentage / 100.0 * 24.0)
 	$LogRight.frame = frame
-	print(frame)
+	#print(frame)
 
 
 func update_heat():
 	heatbar.value = heat
+	var t = remap(heat, 0, 100, 80, 210)
+	$Heatbar/Label.text = "%d°C" % t
+	var color = gradient.sample(heat / heatbar.max_value)
+	heatbar.get_theme_stylebox("fill").bg_color = color
+
+
+func _on_debug_pressed() -> void:
+	GameManager.level = 4
+	GameManager.change_level()

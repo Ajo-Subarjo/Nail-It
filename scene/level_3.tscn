@@ -17,6 +17,10 @@
 _data = [Vector2(0, 0), 0.0, 2.9052012, 0, 0, Vector2(0.40892196, 0.7200001), 0.3955882, 0.3955882, 0, 0, Vector2(1, 1), 1.195555, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="Gradient" id="Gradient_1jy6o"]
+offsets = PackedFloat32Array(0, 0.3618677, 0.7237354, 1)
+colors = PackedColorArray(0, 0.8630216, 0.80621344, 1, 0, 0.77303135, 0.27389365, 1, 0.78060824, 0.6014688, 0.057438426, 1, 0.9999997, 0.14745587, 0.14076903, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_odjrr"]
 atlas = ExtResource("4_1jy6o")
 region = Rect2(0, 0, 1920, 1080)
@@ -207,7 +211,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m8ewg")
 }],
-"loop": 2,
+"loop": 0,
 "name": &"finish",
 "speed": 12.0
 }, {
@@ -376,7 +380,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xymre")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"left",
 "speed": 5.0
 }]
@@ -2286,9 +2290,31 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bm2d3"]
+bg_color = Color(0.6444178, 0.79487073, 0.8057089, 0.7764706)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0.28772128, 0.42290747, 0.42796794, 0.7607843)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biel4"]
+bg_color = Color(0.6581874, 0.8636094, 0.8188189, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.41258755, 0.7145449, 0.634831, 0.61960787)
+shadow_size = 2
+
 [node name="level_3" type="Node2D" unique_id=1146465154]
 script = ExtResource("1_f1gr3")
 heat_curve = SubResource("Curve_mnx0j")
+gradient = SubResource("Gradient_1jy6o")
 
 [node name="Camera" parent="." unique_id=410041547 instance=ExtResource("2_bnhad")]
 
@@ -2303,7 +2329,7 @@ z_index = -2
 position = Vector2(576, 324)
 scale = Vector2(0.61, 0.61)
 sprite_frames = SubResource("SpriteFrames_ksrg7")
-animation = &"right"
+animation = &"finish"
 
 [node name="LogLeft" type="AnimatedSprite2D" parent="." unique_id=1719934659]
 z_index = 1
@@ -2382,12 +2408,37 @@ scale_amount_max = 0.8
 color = Color(0.8789523, 0.8140694, 0.80457497, 1)
 
 [node name="Heatbar" type="ProgressBar" parent="." unique_id=1428894402]
-offset_left = 1102.0
+offset_left = 1092.0
 offset_top = 125.0
 offset_right = 1141.0
 offset_bottom = 526.0
+theme_override_styles/background = SubResource("StyleBoxFlat_bm2d3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_biel4")
+value = 36.51
 fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="Heatbar" unique_id=1225189942]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 95.0
+offset_right = 47.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(1.540184e-06, 0.60750973, 0.6888554, 1)
+theme_override_colors/font_shadow_color = Color(0.29703087, 0.38488895, 0.57800114, 0.81960785)
+theme_override_constants/shadow_outline_size = 4
+text = "dwad"
 
 [node name="Progress" type="ProgressBar" parent="." unique_id=1084420697]
+visible = false
 offset_right = 374.0
 offset_bottom = 67.0
+
+[node name="debug" type="Button" parent="." unique_id=443642497]
+offset_left = 677.0
+offset_top = 159.0
+offset_right = 778.0
+offset_bottom = 195.0
+text = "next"
+
+[connection signal="pressed" from="debug" to="." method="_on_debug_pressed"]

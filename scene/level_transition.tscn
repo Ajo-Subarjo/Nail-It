@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://delpymemtjx42"]
+
+[ext_resource type="Texture2D" uid="uid://5fkesswnpkxa" path="res://sprite/blueprint paper.png" id="1_m83mb"]
+[ext_resource type="Texture2D" uid="uid://be05cpxve4egr" path="res://sprite/level 4/tape measure.png" id="2_ya43d"]
+[ext_resource type="Texture2D" uid="uid://b0fj5n774clv4" path="res://sprite/painter.png" id="3_3dxys"]
+[ext_resource type="Shader" uid="uid://1d8v36jmyi3a" path="res://script/shader/roller.gdshader" id="4_aowu1"]
+[ext_resource type="Texture2D" uid="uid://b4tqryn8kd5ie" path="res://sprite/painter roll.png" id="5_nv0bi"]
+[ext_resource type="Texture2D" uid="uid://0r5o3gguc28g" path="res://sprite/hammer.png" id="6_8nxkr"]
+[ext_resource type="Texture2D" uid="uid://lwhpl5xae700" path="res://sprite/level 3/chainsaw/icon.png" id="7_vyigo"]
+[ext_resource type="Texture2D" uid="uid://cko5k7ptbef47" path="res://sprite/penwrite.png" id="8_ya43d"]
+
+[sub_resource type="GDScript" id="GDScript_m83mb"]
+script/source = "extends Node2D
+
+var arraypath : Array
+
+
+@onready var connection = [
+	{\"connection\" : $connection1,
+	\"prev_icon\": $icon/Hammer,
+	\"next_icon\" : $icon/paintroll,
+	\"prev_scale\" : Vector2(0.08, 0.08),
+	\"next_scale\" : Vector2(1.2, 1.2)
+	},
+	{\"connection\" : $connection2,
+	\"prev_icon\": $icon/paintroll,
+	\"next_icon\" : $icon/chainsaw,
+	\"prev_scale\" : Vector2(1.0, 1.0),
+	\"next_scale\" : Vector2(0.55, 0.55)
+	},
+	{\"connection\" : $connection3,
+	\"prev_icon\": $icon/chainsaw,
+	\"next_icon\" : $icon/TapeMeasure,
+	\"prev_scale\" : Vector2(0.48, 0.48),
+	\"next_scale\" : Vector2(0.13, 0.13)
+	}
+	]
+
+
+func start():
+	await get_tree().create_timer(1).timeout
+
+	var tw = create_tween()
+	tw.set_trans(Tween.TRANS_CIRC)
+	tw.tween_property(connection[0][\"prev_icon\"], \"scale\", Vector2(0.1, 0.1), 0.5)
+	tw.parallel().tween_property(connection[0][\"prev_icon\"].get_child(0), \"modulate:a\", 1.0, 1)
+	await  tw.finished
+	await  get_tree().create_timer(1).timeout
+
+
+
+func start_path(id:int):
+	await get_tree().create_timer(1).timeout
+	var data = connection[id]
+	var _con: Line2D = data[\"connection\"]
+	arraypath = _con.points
+	_con.clear_points()
+	_con.show()
+	await get_tree().create_timer(1).timeout
+
+	var tw = create_tween()
+	tw.set_trans(Tween.TRANS_CIRC)
+	tw.tween_property(data[\"prev_icon\"], \"scale\", data[\"prev_scale\"], 0.5)
+
+	for point in arraypath:
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.tween_property($Penwrite,\"global_position\", _con.to_global(point), 0.01)
+		await tween.finished
+		_con.add_point(point)
+
+	var tw2 = create_tween()
+	tw2.set_trans(Tween.TRANS_CIRC)
+	tw2.tween_property(connection[id].get(\"next_icon\"), \"scale\", data[\"next_scale\"], 0.5)
+	tw2.parallel().tween_property(data[\"next_icon\"].get_child(0), \"modulate:a\", 1.0, 1)
+
+	await  tw2.finished
+	await  get_tree().create_timer(1).timeout
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i76kn"]
+shader = ExtResource("4_aowu1")
+shader_parameter/saturation = 1.0
+
+[node name="level_transition" type="Node2D" unique_id=1034184527]
+script = SubResource("GDScript_m83mb")
+
+[node name="Penwrite" type="Sprite2D" parent="." unique_id=1756956333]
+z_index = 2
+position = Vector2(225.182, 484.3459)
+rotation = 0.2617994
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("8_ya43d")
+offset = Vector2(659.76514, 204.94482)
+
+[node name="icon" type="Node2D" parent="." unique_id=632698061]
+metadata/_edit_lock_ = true
+
+[node name="BlueprintPaper" type="Sprite2D" parent="icon" unique_id=771257642]
+z_index = -3
+position = Vector2(575, 324.00003)
+scale = Vector2(0.61, 0.615)
+texture = ExtResource("1_m83mb")
+
+[node name="Hammer" type="Sprite2D" parent="icon" unique_id=725519478]
+position = Vector2(189.99998, 464)
+rotation = -0.27263564
+scale = Vector2(0.08, 0.08)
+skew = 0.0042043924
+texture = ExtResource("6_8nxkr")
+
+[node name="outline" type="Line2D" parent="icon/Hammer" unique_id=1543560198]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(-601.3456, -4980.2773)
+rotation = 0.2723334
+scale = Vector2(10.010909, 9.989254)
+skew = -0.003603816
+points = PackedVector2Array(112, 380, 138, 371, 151, 367, 171, 364, 192, 364, 214, 362, 242, 370, 267, 380, 282, 402, 272, 421, 248, 426, 221, 439, 212, 470, 228, 494, 241, 531, 226, 567, 181, 577, 152, 552, 150, 514, 140, 470, 114, 463, 82, 460, 78, 433, 76, 389, 100, 381)
+closed = true
+
+[node name="paintroll" type="Node2D" parent="icon" unique_id=11435475]
+position = Vector2(443, 143)
+rotation = 0.15951218
+scale = Vector2(0.99999994, 0.99999994)
+metadata/_edit_group_ = true
+
+[node name="outline" type="Line2D" parent="icon/paintroll" unique_id=745899296]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(-460.08972, -70.82)
+rotation = -0.15951216
+scale = Vector2(1.0000001, 1.0000001)
+points = PackedVector2Array(351, 109, 349, 122, 357, 136, 374, 144, 398, 151, 395, 175, 385, 210, 374, 264, 378, 287, 387, 302, 416, 305, 427, 302, 435, 285, 439, 265, 440, 236, 448, 221, 455, 211, 471, 207, 494, 205, 510, 187, 522, 153, 524, 123, 515, 108, 498, 102, 476, 97, 445, 95, 423, 92, 406, 88, 391, 78, 371, 85, 355, 92)
+closed = true
+
+[node name="Painter" type="Sprite2D" parent="icon/paintroll" unique_id=1670316297]
+position = Vector2(0, 57)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_3dxys")
+
+[node name="PainterRoll" type="Sprite2D" parent="icon/paintroll" unique_id=1215877734]
+material = SubResource("ShaderMaterial_i76kn")
+position = Vector2(0, 57)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_nv0bi")
+
+[node name="chainsaw" type="Sprite2D" parent="icon" unique_id=66997336]
+position = Vector2(746.99994, 510)
+rotation = -1.4563692
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("7_vyigo")
+
+[node name="outline" type="Line2D" parent="icon/chainsaw" unique_id=1470537777]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(877.86273, -1667.3862)
+rotation = 1.4563692
+scale = Vector2(2.0833333, 2.0833333)
+points = PackedVector2Array(671, 431, 696, 430, 725, 436, 757, 443, 783, 439, 809, 426, 836, 422, 855, 399, 875, 389, 915, 406, 918, 432, 952, 433, 980, 437, 1011, 495, 1011, 554, 993, 578, 968, 587, 944, 589, 927, 597, 879, 598, 822, 593, 780, 585, 775, 575, 752, 572, 707, 570, 653, 564, 616, 557, 557, 540, 532, 508, 528, 470, 554, 444, 586, 428, 625, 420, 645, 428)
+closed = true
+
+[node name="TapeMeasure" type="Sprite2D" parent="icon" unique_id=1799613164]
+position = Vector2(1035, 88.99994)
+rotation = -0.7853982
+scale = Vector2(0.1, 0.1)
+skew = 0.0071257353
+texture = ExtResource("2_ya43d")
+region_enabled = true
+region_rect = Rect2(0, 0, 926.1995, 1080)
+
+[node name="outline" type="Line2D" parent="icon/TapeMeasure" unique_id=32361707]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(-6441.76, -7941.0107)
+rotation = 0.7818606
+scale = Vector2(10.035819, 9.964562)
+skew = -5.0663948e-05
+points = PackedVector2Array(950, 111, 969, 140.99994, 987, 161, 1025, 162, 1047, 150, 1073, 114, 1082, 88, 1069, 65, 1052, 49, 1021, 33, 994, 53, 971, 69, 951, 91)
+closed = true
+
+[node name="connection1" type="Line2D" parent="." unique_id=941545142]
+visible = false
+points = PackedVector2Array(226, 485, 234, 481, 243, 477, 251, 473, 257, 470, 263, 467, 268.57095, 464.21463, 274.27887, 461.36066, 279.9881, 458.77682, 285.05548, 456.70236, 290.63928, 454.10025, 295.0047, 451.56815, 300, 448, 303, 442, 305, 435, 305, 428.1264, 304.73785, 422.1163, 304.19196, 416.11133, 304, 412.18692, 304, 407.41522, 303.69858, 401.43787, 303.10123, 396.36023, 302.50525, 391.29437, 302, 387, 301.6573, 381.859, 301.4285, 378.427, 301.12183, 373.82678, 300.41895, 369.38516, 299.5064, 365.27875, 299, 360.815, 299, 356.5509, 299, 352, 299, 347.2035, 299.00003, 343.84732, 299, 341.02502, 299, 338, 298.70923, 333.92896, 298.40363, 329.65033, 298.136, 325.90472, 297.8543, 321.524, 297.65802, 318.18668, 297.43423, 314.3819, 297.22235, 310.78036, 297, 307, 296.99988, 303.62137, 296.99988, 299.59946, 297, 296, 296.22287, 291.72595, 295.5272, 287.89987, 295, 285, 294.75287, 280.55212, 294.54376, 276.78836, 294.34164, 273.1497, 294.1091, 268.9635, 294, 265, 294, 260.32614, 294, 256, 294, 250, 295, 245, 295.61407, 241.31548, 296.55722, 237.32838, 298.605, 231.185, 300, 227, 301.9954, 223.00925, 307, 217, 311.14206, 213.64346, 315.18408, 211.08955, 319.32687, 208.83649, 323, 207, 327.52386, 206.35374, 332.7281, 205.65901, 338, 205, 342.49582, 204.52673, 347, 204, 351.37717, 203.37473, 355.09778, 203.00002, 359.07623, 203.00002, 363.33884, 203.00002, 367.77957, 203.00002, 371, 203, 374.54944, 203.44371)
+default_color = Color(0.6955031, 0.6955032, 0.6955029, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="connection2" type="Line2D" parent="." unique_id=631864458]
+visible = false
+position = Vector2(554.7085, 214.03964)
+points = PackedVector2Array(-34.708496, -43.039642, -27.708496, -44.039642, -19.708496, -44.039642, -13.708496, -44.039642, -6.708496, -44.039642, 2.291504, -44.039642, 8.291504, -42.039642, 15.651016, -40.659733, 24.291504, -39.039642, 31.291504, -37.039642, 39.291504, -35.039642, 47.291504, -31.039642, 54.291504, -28.039642, 62.291504, -23.039642, 66.83453, -17.487053, 71.291504, -12.039642, 74.36713, -6.767147, 78.291504, -0.039642334, 81.291504, 7.9603577, 83.47829, 12.880592, 85.291504, 16.960358, 88.291504, 22.960358, 91.291504, 29.960358, 94.291504, 35.960358, 96.291504, 41.960358, 98.291504, 48.960358, 100.291504, 55.960358, 101.26125, 60.80911, 102.291504, 65.96036, 103.37398, 70.29025, 104.291504, 73.96036, 105.291504, 80.96036, 106.21329, 87.87373, 107.291504, 95.96036, 107.78766, 100.42575, 108.291504, 104.96036, 109.16078, 111.47992, 110.291504, 119.96036, 111.375786, 126.466034, 112.291504, 131.96036, 113.83189, 138.1219, 115.291504, 143.96036, 116.23354, 147.72849, 117.291504, 151.96036, 118.16041, 155.87042, 119.291504, 160.96036, 119.96209, 165.65442, 120.63163, 170.34125, 121.291504, 174.96036, 122.291504, 180.96036, 123.291504, 185.96036, 124.291504, 189.96036, 124.291504, 193.96036, 124.291504, 197.96036, 124.291504, 204.96036, 124.291504, 208.96036)
+default_color = Color(0.69411767, 0.69411767, 0.69411767, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="connection3" type="Line2D" parent="." unique_id=192877170]
+visible = false
+points = PackedVector2Array(907, 407, 909.46265, 403.0596, 912, 399, 915.3234, 391.24536, 918, 385, 919, 375, 919, 364, 918.99994, 358.00244, 918.99994, 352.26495, 918.99994, 348.30634, 919, 345, 918.4146, 338.56033, 917.5217, 330.17316, 916.53827, 323.46045, 915.52655, 317.8958, 913.99255, 311.47388, 912.6383, 305.7093, 911.7819, 300.28546, 910.926, 294.86475, 910, 289, 909.2835, 283.98456, 908.46826, 278.2778, 907.7803, 272.36276, 907.34784, 267.1738, 907, 263, 906.2837, 257.9855, 905.4629, 252.24026, 904.66736, 246, 904.3522, 239.92928, 904, 235, 904, 230, 905, 224, 905.63824, 218.25522, 906.4798, 212.12108, 907.27576, 207.34528, 908, 203, 909.63416, 198.0975, 911.32904, 193.01285, 912.947, 188.79016, 914.3966, 185.40791, 915.8332, 182.05606, 918, 177, 920, 173, 925, 168, 930, 163, 935, 159, 939.5483, 156.72594, 945, 154, 950, 150, 957, 146, 963, 141, 970, 135, 976, 130, 983, 127)
+default_color = Color(0.69411767, 0.69411767, 0.69411767, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=533008741]

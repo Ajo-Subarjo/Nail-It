@@ -1,0 +1,830 @@
+[gd_scene format=3 uid="uid://ci8n3n7pk85iu"]
+
+[ext_resource type="Script" uid="uid://de1i67iq4714t" path="res://script/component/game_manager.gd" id="1_rlhdt"]
+[ext_resource type="PackedScene" uid="uid://delpymemtjx42" path="res://scene/level_transition.tscn" id="2_ggkvf"]
+
+[sub_resource type="Gradient" id="Gradient_rlhdt"]
+offsets = PackedFloat32Array(0, 0.27572018, 0.52263373, 0.6995885, 1)
+colors = PackedColorArray(0.8963612, 0.10970325, 0, 1, 0.8382166, 0.28477523, 0.25672153, 1, 0.42344677, 0.8351312, 0, 1, 0.42422357, 0.8139259, 0.73774356, 1, 0.30237198, 0.88124585, 0.9889254, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7v68"]
+bg_color = Color(0.6328133, 0.8038416, 0.77906877, 0.84313726)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6ljh"]
+bg_color = Color(1.211, 0.6356803, 0.42336053, 1)
+shadow_color = Color(0.99999994, 0.5998187, 0.26375148, 0.6509804)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="Animation" id="Animation_rlhdt"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/game_over/low:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-28, 800), Vector2(-28, 479)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/game_over/back:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, -205), Vector2(2.000001, -204.99997)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/game_over/front:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-700, -22), Vector2(-173.99997, -22.000004)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/game_over/button:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 850), Vector2(0, 525)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/game_over/info:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3331974),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 16), Vector2(21, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/level_transition:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -700)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/win/front:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, 800)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/win/front2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-600, -19)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/win/low:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-28, 800)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/win/info:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-400, 9)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/win/button:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 800)]
+}
+
+[sub_resource type="Animation" id="Animation_lbt4b"]
+resource_name = "change_scene"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/level_transition:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -700), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_po62a"]
+resource_name = "complete"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/win/front:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(11, 800), Vector2(11, -188)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/win/front2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-600, -19), Vector2(-167, -19)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/win/low:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-28, 800), Vector2(-28, 438)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/win/info:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-400, 9), Vector2(35, 9)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/win/button:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 800), Vector2(0, 500)]
+}
+
+[sub_resource type="Animation" id="Animation_ggkvf"]
+resource_name = "game_over"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/game_over/low:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-28, 700), Vector2(-28, 479)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/game_over/back:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-409, -205), Vector2(2.000001, -204.99997)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/game_over/front:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-599, -22.000004), Vector2(-173.99997, -22.000004)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/game_over:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/game_over/button:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 850), Vector2(0, 525)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/game_over/info:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 16), Vector2(21, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_po62a"]
+_data = {
+&"RESET": SubResource("Animation_rlhdt"),
+&"change_scene": SubResource("Animation_lbt4b"),
+&"complete": SubResource("Animation_po62a"),
+&"game_over": SubResource("Animation_ggkvf")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlhdt"]
+bg_color = Color(0.94119555, 0.7895226, 0.5318785, 0.84313726)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.95473427, 0.8883595, 0.6282515, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.9421156, 0.7589266, 0.48509878, 0.8392157)
+shadow_size = 2
+shadow_offset = Vector2(7, 5)
+anti_aliasing_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggkvf"]
+bg_color = Color(0.94119555, 0.7895226, 0.5318785, 0.84313726)
+border_width_left = 5
+border_width_top = 15
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.95473427, 0.8883595, 0.6282515, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0.9421156, 0.7589266, 0.48509878, 0.8392157)
+shadow_size = 2
+shadow_offset = Vector2(7, 5)
+anti_aliasing_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_po62a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx7my"]
+bg_color = Color(0.64415437, 0.8662645, 0.8275914, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.42093626, 0.6934695, 0.77080417, 0.61960787)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jautk"]
+bg_color = Color(0.9438185, 0.7516772, 0.82808566, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.8562517, 0.5249591, 0.6990636, 0.61960787)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbt4b"]
+bg_color = Color(0.98678046, 0.77370685, 0.4375057, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.96229476, 0.5046066, 0.16425452, 0.61960787)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bm2d3"]
+bg_color = Color(0.45118362, 0.6421556, 0.6365669, 0.7764706)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0.28772128, 0.42290747, 0.42796794, 0.7607843)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biel4"]
+bg_color = Color(0.6581874, 0.8636094, 0.8188189, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.41258755, 0.7145449, 0.634831, 0.61960787)
+shadow_size = 2
+
+[node name="game_manager" type="Node2D" unique_id=287672572]
+script = ExtResource("1_rlhdt")
+grad = SubResource("Gradient_rlhdt")
+
+[node name="Control" type="Control" parent="." unique_id=1159021138]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+
+[node name="timeprog" type="ProgressBar" parent="Control" unique_id=1875637066]
+z_index = 4
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 29.0
+theme_override_styles/background = SubResource("StyleBoxFlat_m7v68")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r6ljh")
+max_value = 30.0
+value = 30.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Control" unique_id=787228813]
+z_index = 4
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = -7.0
+offset_right = 45.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.74436295, 0.65590185, 1)
+theme_override_colors/font_shadow_color = Color(0.8974182, 0.21767902, 0.28831843, 0.84313726)
+theme_override_font_sizes/font_size = 24
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1008927389]
+offset_left = 549.0
+offset_top = 36.0
+offset_right = 710.0
+offset_bottom = 74.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="." unique_id=2017872419]
+wait_time = 120.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=221752752]
+libraries/ = SubResource("AnimationLibrary_po62a")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2092615071]
+
+[node name="level_transition" parent="CanvasLayer" unique_id=1034184527 instance=ExtResource("2_ggkvf")]
+z_index = 4
+position = Vector2(0, -700)
+
+[node name="game_over" type="Control" parent="CanvasLayer" unique_id=877123258]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="back" type="ColorRect" parent="CanvasLayer/game_over" unique_id=223165946]
+layout_mode = 0
+offset_left = -500.0
+offset_top = -205.0
+offset_right = -91.902954
+offset_bottom = 526.0
+rotation = 0.2617994
+color = Color(0.6981688, 0.43616754, 0.3574873, 1)
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/game_over/back" unique_id=237954397]
+layout_mode = 0
+offset_left = -9.659267
+offset_top = 2.5881805
+offset_right = 398.43777
+offset_bottom = 733.5882
+color = Color(0.7749543, 0.5087245, 0.42878067, 1)
+
+[node name="front" type="ColorRect" parent="CanvasLayer/game_over" unique_id=2141877429]
+layout_mode = 0
+offset_left = -700.0
+offset_top = -22.0
+offset_right = -291.903
+offset_bottom = 709.0
+rotation = -0.2617994
+color = Color(0.67289084, 0.46830928, 0.34276465, 1)
+
+[node name="Background2" type="ColorRect" parent="CanvasLayer/game_over/front" unique_id=1223598229]
+layout_mode = 0
+offset_left = -12.557053
+offset_top = -3.3646545
+offset_right = 395.53998
+offset_bottom = 727.6354
+color = Color(0.8137123, 0.6045395, 0.4788692, 1)
+
+[node name="low" type="ColorRect" parent="CanvasLayer/game_over" unique_id=951218332]
+layout_mode = 0
+offset_left = -28.0
+offset_top = 800.0
+offset_right = 1172.0
+offset_bottom = 1161.0015
+color = Color(0.8506686, 0.6727288, 0.46308374, 1)
+
+[node name="Background1" type="ColorRect" parent="CanvasLayer/game_over/low" unique_id=1212218221]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 1200.0
+offset_bottom = 368.0
+color = Color(0.89021444, 0.72634995, 0.5340398, 1)
+
+[node name="button" type="HBoxContainer" parent="CanvasLayer/game_over" unique_id=703602071]
+layout_mode = 0
+offset_top = 850.0
+offset_right = 1152.0
+offset_bottom = 935.0
+theme_override_constants/separation = 125
+alignment = 1
+
+[node name="tryagain" type="Button" parent="CanvasLayer/game_over/button" unique_id=1102067576 groups=["Button"]]
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0.9954887, 0.92332894, 0.8790848, 1)
+theme_override_colors/font_outline_color = Color(0.942379, 0.68306553, 0.37945452, 1)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rlhdt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rlhdt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ggkvf")
+text = "Try Again"
+
+[node name="quit" type="Button" parent="CanvasLayer/game_over/button" unique_id=227639904 groups=["Button"]]
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0.9954887, 0.92332894, 0.8790848, 1)
+theme_override_colors/font_outline_color = Color(0.942379, 0.68306553, 0.37945452, 1)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rlhdt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rlhdt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ggkvf")
+text = "Quit"
+
+[node name="info" type="VBoxContainer" parent="CanvasLayer/game_over" unique_id=472490316]
+layout_mode = 0
+offset_left = -500.0
+offset_top = 16.0
+offset_right = -207.0
+offset_bottom = 482.0
+
+[node name="failed" type="Label" parent="CanvasLayer/game_over/info" unique_id=896169013]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8638179, 0.87972593, 0.9844399, 1)
+theme_override_colors/font_shadow_color = Color(0.6488048, 0.6430788, 0.75068563, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = -2
+theme_override_constants/shadow_outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "Failed!"
+
+[node name="level" type="Label" parent="CanvasLayer/game_over/info" unique_id=375603153]
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.67002946, 0.75931644, 0.61806613, 1)
+theme_override_colors/font_shadow_color = Color(0.14800301, 0.2787496, 0.251528, 0.7490196)
+theme_override_constants/shadow_outline_size = 200
+theme_override_font_sizes/font_size = 124
+text = "3"
+horizontal_alignment = 1
+
+[node name="level_name" type="Label" parent="CanvasLayer/game_over/info" unique_id=1099726709]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.9933885, 0.82512295, 0.53327227, 1)
+theme_override_colors/font_shadow_color = Color(0.7614347, 0.5224647, 0.36957926, 0.9490196)
+theme_override_constants/line_spacing = -23
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "HAMMER
+TIME!"
+
+[node name="win" type="Control" parent="CanvasLayer" unique_id=1371411854]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="front" type="ColorRect" parent="CanvasLayer/win" unique_id=936171349]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 800.0
+offset_right = 456.0
+offset_bottom = 1672.0033
+rotation = 0.2617994
+color = Color(0.80502385, 0.53985524, 0.43117213, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/win/front" unique_id=869380195]
+layout_mode = 0
+offset_left = -12.0
+offset_right = 433.0
+offset_bottom = 872.0
+color = Color(0.8527459, 0.57521564, 0.42942667, 1)
+
+[node name="front2" type="ColorRect" parent="CanvasLayer/win" unique_id=861006710]
+layout_mode = 0
+offset_left = -600.0
+offset_top = -19.0
+offset_right = -155.0
+offset_bottom = 853.0
+rotation = -0.12542723
+color = Color(0.92197865, 0.7143216, 0.46872544, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/win/front2" unique_id=411633157]
+layout_mode = 0
+offset_left = -12.0
+offset_right = 433.0
+offset_bottom = 872.0
+color = Color(0.99150413, 0.7821185, 0.56132114, 1)
+
+[node name="low" type="ColorRect" parent="CanvasLayer/win" unique_id=2140602814]
+layout_mode = 0
+offset_left = -28.0
+offset_top = 800.0
+offset_right = 1172.0
+offset_bottom = 1160.9988
+color = Color(0.934403, 0.83164555, 0.6202064, 1)
+
+[node name="Background1" type="ColorRect" parent="CanvasLayer/win/low" unique_id=1453035192]
+layout_mode = 0
+offset_top = 12.0
+offset_right = 1200.0
+offset_bottom = 373.0
+color = Color(0.96093184, 0.88114506, 0.7381225, 1)
+
+[node name="button" type="HBoxContainer" parent="CanvasLayer/win" unique_id=1303103275]
+layout_mode = 0
+offset_top = 800.0
+offset_right = 1152.0
+offset_bottom = 884.99994
+theme_override_constants/separation = 125
+alignment = 1
+
+[node name="tryagain" type="Button" parent="CanvasLayer/win/button" unique_id=1027207767 groups=["Button"]]
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0.9954887, 0.92332894, 0.8790848, 1)
+theme_override_colors/font_outline_color = Color(0.942379, 0.68306553, 0.37945452, 1)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rlhdt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rlhdt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ggkvf")
+text = "Play Again"
+
+[node name="quit" type="Button" parent="CanvasLayer/win/button" unique_id=105614614 groups=["Button"]]
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0.9954887, 0.92332894, 0.8790848, 1)
+theme_override_colors/font_outline_color = Color(0.942379, 0.68306553, 0.37945452, 1)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rlhdt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rlhdt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ggkvf")
+text = "Quit"
+
+[node name="info" type="VBoxContainer" parent="CanvasLayer/win" unique_id=1284003733]
+layout_mode = 0
+offset_left = -400.0
+offset_top = 9.0
+offset_right = -156.99988
+offset_bottom = 438.0
+theme_override_constants/separation = -2
+
+[node name="time2" type="Label" parent="CanvasLayer/win/info" unique_id=195928746]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7944011, 0.9650753, 0.8706173, 1)
+theme_override_colors/font_shadow_color = Color(0.44718575, 0.6259552, 0.5843801, 0.9490196)
+theme_override_constants/line_spacing = -23
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = -1
+theme_override_constants/shadow_outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Time:"
+
+[node name="progress" type="Control" parent="CanvasLayer/win/info" unique_id=1614111151]
+custom_minimum_size = Vector2(0, 245)
+layout_mode = 2
+
+[node name="l1" type="ProgressBar" parent="CanvasLayer/win/info/progress" unique_id=1487508553]
+z_index = 3
+layout_mode = 0
+offset_right = 63.395
+offset_bottom = 250.0
+theme_override_styles/background = SubResource("StyleBoxFlat_po62a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bx7my")
+max_value = 30.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/win/info/progress/l1" unique_id=677857189]
+layout_mode = 0
+offset_top = 208.0
+offset_right = 45.0
+offset_bottom = 225.0
+theme_override_colors/font_color = Color(0.36510175, 0.6649355, 0.80037886, 1)
+theme_override_colors/font_shadow_color = Color(0.6422394, 0.71331334, 0.7073435, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 12
+
+[node name="l2" type="ProgressBar" parent="CanvasLayer/win/info/progress" unique_id=1390193763]
+z_index = 2
+layout_mode = 0
+offset_right = 63.395
+offset_bottom = 250.0
+theme_override_styles/background = SubResource("StyleBoxFlat_po62a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jautk")
+max_value = 30.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/win/info/progress/l2" unique_id=1252567140]
+layout_mode = 0
+offset_top = 208.0
+offset_right = 45.0
+offset_bottom = 231.0
+theme_override_colors/font_color = Color(0.7669121, 0.550428, 0.639529, 1)
+theme_override_colors/font_shadow_color = Color(0.86153424, 0.62693447, 0.62290466, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 12
+
+[node name="l3" type="ProgressBar" parent="CanvasLayer/win/info/progress" unique_id=1947745442]
+z_index = 1
+layout_mode = 0
+offset_right = 63.395
+offset_bottom = 250.0
+theme_override_styles/background = SubResource("StyleBoxFlat_po62a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lbt4b")
+max_value = 30.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/win/info/progress/l3" unique_id=1112487822]
+layout_mode = 0
+offset_top = 208.0
+offset_right = 45.0
+offset_bottom = 231.0
+theme_override_colors/font_color = Color(0.93480563, 0.67494524, 0.20805249, 1)
+theme_override_colors/font_shadow_color = Color(0.92138815, 0.6228184, 0.2921256, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 12
+
+[node name="l4" type="ProgressBar" parent="CanvasLayer/win/info/progress" unique_id=1278853693]
+layout_mode = 0
+offset_right = 63.395
+offset_bottom = 250.0
+theme_override_styles/background = SubResource("StyleBoxFlat_bm2d3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_biel4")
+max_value = 30.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/win/info/progress/l4" unique_id=24899093]
+layout_mode = 0
+offset_top = 208.0
+offset_right = 45.0
+offset_bottom = 231.0
+theme_override_colors/font_color = Color(0.6156863, 0.84705883, 0.69803923, 1)
+theme_override_colors/font_shadow_color = Color(0.6379594, 0.7323876, 0.56277865, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 12
+
+[node name="time" type="Label" parent="CanvasLayer/win/info" unique_id=706477711]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9678723, 0.8593132, 0.5079013, 1)
+theme_override_colors/font_shadow_color = Color(0.78434294, 0.5131422, 0.29151288, 0.9490196)
+theme_override_constants/line_spacing = -23
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 12
+theme_override_font_sizes/font_size = 52
+text = "YOU NAIL
+ IT!!!"
+
+[node name="Label" type="Label" parent="CanvasLayer/win" unique_id=1549404910]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 135.0
+offset_right = 1007.0
+offset_bottom = 342.0
+scale = Vector2(1e-05, 1e-05)
+theme_override_colors/font_color = Color(0.99531776, 0.8767351, 0.55396307, 1)
+theme_override_colors/font_shadow_color = Color(0.9509044, 0.67148644, 0.31099075, 0.9490196)
+theme_override_constants/line_spacing = -23
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 22
+theme_override_font_sizes/font_size = 84
+text = "LEVEL
+COMPLETE"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/game_over/button/tryagain" to="." method="_on_tryagain_pressed"]
+[connection signal="pressed" from="CanvasLayer/game_over/button/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/win/button/tryagain" to="." method="_on_tryagain_pressed"]
+[connection signal="pressed" from="CanvasLayer/win/button/quit" to="." method="_on_quit_pressed"]

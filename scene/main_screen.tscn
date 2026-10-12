@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cvq4i0sv4tkci" path="res://sprite/nail.png" id="3_ckf3p"]
 [ext_resource type="Texture2D" uid="uid://cou24mjnbjx6o" path="res://sprite/pen.png" id="4_n877d"]
 [ext_resource type="PackedScene" uid="uid://u0svlgkbwote" path="res://scene/component/Camera.tscn" id="7_06ml0"]
+[ext_resource type="Texture2D" uid="uid://cglus8etma33o" path="res://sprite/level 4/tape end.png" id="7_gigxy"]
+[ext_resource type="Texture2D" uid="uid://be05cpxve4egr" path="res://sprite/level 4/tape measure.png" id="8_1ov7q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmo0d"]
 bg_color = Color(0.35929307, 0.64774424, 0.73244905, 0.7529412)
@@ -160,6 +162,20 @@ position = Vector2(596, 445.99997)
 rotation = 0.58247215
 scale = Vector2(0.15000002, 0.15000002)
 texture = ExtResource("4_n877d")
+
+[node name="TapeEnd" type="Sprite2D" parent="Control2" unique_id=206287145]
+position = Vector2(500.92, 277.23)
+rotation = -0.5305801
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("7_gigxy")
+
+[node name="TapeMeasure" type="Sprite2D" parent="Control2" unique_id=2000362503]
+position = Vector2(493.00003, 282)
+rotation = -0.5305801
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("8_1ov7q")
+region_enabled = true
+region_rect = Rect2(0, 0, 926.1995, 1080)
 
 [node name="Camera" parent="." unique_id=410041547 instance=ExtResource("7_06ml0")]
 

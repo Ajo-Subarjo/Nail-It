@@ -273,11 +273,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="Hammer" unique_id=936906265]
 offset_left = -62.0
-offset_top = -21.0
-offset_right = 61.0
-offset_bottom = 29.0
+offset_top = -33.0
+offset_right = 147.0
+offset_bottom = 189.0
 flat = true
-metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hammer" unique_id=1404206725]
 position = Vector2(2.5, 4.5)
@@ -382,6 +381,13 @@ loop = true
 
 [node name="Camera" parent="." unique_id=1757026362 instance=ExtResource("10_ri5j0")]
 
+[node name="debug" type="Button" parent="." unique_id=1535836525]
+offset_left = 677.0
+offset_top = 159.0
+offset_right = 778.0
+offset_bottom = 195.0
+text = "next"
+
 [connection signal="body_entered" from="nail group/Nail/Hitbox" to="nail group/Nail" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="nail group/Nail2/Hitbox" to="nail group/Nail2" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="nail group/Nail3/Hitbox" to="nail group/Nail3" method="_on_hitbox_body_entered"]
@@ -389,3 +395,4 @@ loop = true
 [connection signal="button_down" from="Hammer/Button" to="Hammer" method="_on_hammer_down"]
 [connection signal="button_up" from="Hammer/Button" to="Hammer" method="_on_hammer_up"]
 [connection signal="pressed" from="tutorial/Button" to="." method="_on_start"]
+[connection signal="pressed" from="debug" to="." method="_on_debug_pressed"]
