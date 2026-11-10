@@ -117,7 +117,7 @@ offset_bottom = 32.0
 flat = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="painter" unique_id=2077539317]
-position = Vector2(-18, -18)
+position = Vector2(-18, -5)
 shape = SubResource("RectangleShape2D_kbweo")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1427829808]
@@ -239,6 +239,7 @@ autoplay = true
 loop = true
 
 [node name="debug" type="Button" parent="." unique_id=617904425]
+visible = false
 offset_left = 677.0
 offset_top = 159.0
 offset_right = 778.0

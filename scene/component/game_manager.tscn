@@ -154,6 +154,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector2(0, 800)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/win:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_lbt4b"]
 resource_name = "change_scene"
@@ -441,6 +453,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=1008927389]
+visible = false
 offset_left = 549.0
 offset_top = 36.0
 offset_right = 710.0
@@ -596,7 +609,6 @@ text = "HAMMER
 TIME!"
 
 [node name="win" type="Control" parent="CanvasLayer" unique_id=1371411854]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -716,7 +728,7 @@ offset_right = 63.395
 offset_bottom = 250.0
 theme_override_styles/background = SubResource("StyleBoxFlat_po62a")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bx7my")
-max_value = 30.0
+max_value = 75.0
 fill_mode = 3
 show_percentage = false
 
@@ -737,7 +749,7 @@ offset_right = 63.395
 offset_bottom = 250.0
 theme_override_styles/background = SubResource("StyleBoxFlat_po62a")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jautk")
-max_value = 30.0
+max_value = 75.0
 fill_mode = 3
 show_percentage = false
 
@@ -758,7 +770,7 @@ offset_right = 63.395
 offset_bottom = 250.0
 theme_override_styles/background = SubResource("StyleBoxFlat_po62a")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lbt4b")
-max_value = 30.0
+max_value = 75.0
 fill_mode = 3
 show_percentage = false
 
@@ -778,7 +790,7 @@ offset_right = 63.395
 offset_bottom = 250.0
 theme_override_styles/background = SubResource("StyleBoxFlat_bm2d3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_biel4")
-max_value = 30.0
+max_value = 75.0
 fill_mode = 3
 show_percentage = false
 

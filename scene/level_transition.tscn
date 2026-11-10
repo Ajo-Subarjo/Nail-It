@@ -14,6 +14,7 @@ script/source = "extends Node2D
 
 var arraypath : Array
 
+var ori_scale = [Vector2(0.08, 0.08), Vector2(1.0, 1.0), Vector2(0.48, 0.48), Vector2(0.1,0.1)]
 
 @onready var connection = [
 	{\"connection\" : $connection1,
@@ -34,7 +35,7 @@ var arraypath : Array
 	\"prev_scale\" : Vector2(0.48, 0.48),
 	\"next_scale\" : Vector2(0.13, 0.13)
 	}
-	]
+]
 
 
 func start():
@@ -71,11 +72,22 @@ func start_path(id:int):
 
 	var tw2 = create_tween()
 	tw2.set_trans(Tween.TRANS_CIRC)
-	tw2.tween_property(connection[id].get(\"next_icon\"), \"scale\", data[\"next_scale\"], 0.5)
+	tw2.tween_property(data.get(\"next_icon\"), \"scale\", data[\"next_scale\"], 0.5)
 	tw2.parallel().tween_property(data[\"next_icon\"].get_child(0), \"modulate:a\", 1.0, 1)
 
 	await  tw2.finished
 	await  get_tree().create_timer(1).timeout
+
+func clear():
+	for i in range(connection.size()):
+		var data = connection[i]
+		var con: Line2D = data[\"connection\"]
+		con.hide()
+		data[\"prev_icon\"].scale = ori_scale[i]
+		if i + 1 < ori_scale.size():
+			data[\"next_icon\"].scale = ori_scale[i + 1]
+		data[\"next_icon\"].get_child(0).modulate.a = 0.0
+	$Penwrite.position = Vector2(225.182, 484.346)
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i76kn"]
@@ -99,7 +111,7 @@ metadata/_edit_lock_ = true
 [node name="BlueprintPaper" type="Sprite2D" parent="icon" unique_id=771257642]
 z_index = -3
 position = Vector2(575, 324.00003)
-scale = Vector2(0.61, 0.615)
+scale = Vector2(0.61, 0.61)
 texture = ExtResource("1_m83mb")
 
 [node name="Hammer" type="Sprite2D" parent="icon" unique_id=725519478]

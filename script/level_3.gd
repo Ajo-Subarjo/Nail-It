@@ -25,27 +25,38 @@ var smoke_alpha := 0.0
 
 func _ready() -> void:
 	$Chainsaw.play("idle")
-	await get_tree().create_timer(1).timeout
+	Audiomanager.stop_chainsaw()
+	await get_tree().create_timer(2).timeout
 	GameManager.paused = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("chainsaw trigger") and !overheat and!finish:
-		print("brrrrrr")
-		$Chainsaw/CPUParticles2D.emitting = true
-		$Chainsaw/CPUParticles2D2.emitting = true
-		chainsaw.play("trigger")
-		chainsaw.speed_scale = 8
-		trigger = true
-		camera.start_shake(1)
+		chainsaw_start()
 
 	if event.is_action_released("chainsaw trigger") and !finish:
-		$Chainsaw/CPUParticles2D.emitting = false
-		$Chainsaw/CPUParticles2D2.emitting = false
-		trigger = false
-		chainsaw.play("idle")
-		chainsaw.speed_scale = 1
-		camera.stop_shake()
+		chainsaw_stop()
+
+func chainsaw_start():
+	Audiomanager.start_chainsaw()
+	#print("brrrrrr")
+	$Chainsaw/CPUParticles2D.emitting = true
+	$Chainsaw/CPUParticles2D2.emitting = true
+	chainsaw.play("trigger")
+	chainsaw.speed_scale = 8
+	trigger = true
+	Audiomanager.start_chainsaw()
+	camera.start_shake(1)
+
+
+func chainsaw_stop():
+	Audiomanager.stop_chainsaw()
+	$Chainsaw/CPUParticles2D.emitting = false
+	$Chainsaw/CPUParticles2D2.emitting = false
+	trigger = false
+	chainsaw.play("idle")
+	chainsaw.speed_scale = 1
+	camera.stop_shake()
 
 
 func _process(delta: float) -> void:
@@ -70,7 +81,7 @@ func _process(delta: float) -> void:
 	if progress_percentage >= 90 and !finish:
 		finish = true
 		trigger = false
-
+		chainsaw_stop()
 		chainsaw.play("idle")
 		chainsaw.speed_scale = 1
 		camera.stop_shake()
@@ -78,6 +89,7 @@ func _process(delta: float) -> void:
 		#await get_tree().create_timer(2).timeout
 		$LogLeft.hide()
 		$LogRight.play("finish")
+		
 		await get_tree().create_timer(1).timeout
 		GameManager.paused = true
 		GameManager.level = 4
@@ -138,3 +150,11 @@ func update_heat():
 func _on_debug_pressed() -> void:
 	GameManager.level = 4
 	GameManager.change_level()
+
+
+func _on_chainsaw_button_down() -> void:
+	chainsaw_start()
+
+
+func _on_chainsaw_button_up() -> void:
+	chainsaw_stop()

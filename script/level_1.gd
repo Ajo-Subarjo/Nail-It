@@ -10,6 +10,7 @@ var nail_count = 0
 
 
 func _ready() -> void:
+	Audiomanager.set_bgmvolume(-2)
 	#$tutorial.show()
 	await get_tree().create_timer(1).timeout
 	GameManager.start_timer()

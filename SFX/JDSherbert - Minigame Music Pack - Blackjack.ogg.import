@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bf7ngqbj0ch1n"
+path="res://.godot/imported/JDSherbert - Minigame Music Pack - Blackjack.ogg-21967f9fba42709793a9d86d5e0ba534.oggvorbisstr"
+
+[deps]
+
+source_file="res://SFX/JDSherbert - Minigame Music Pack - Blackjack.ogg"
+dest_files=["res://.godot/imported/JDSherbert - Minigame Music Pack - Blackjack.ogg-21967f9fba42709793a9d86d5e0ba534.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

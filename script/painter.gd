@@ -102,6 +102,7 @@ func _on_painter_up() -> void:
 
 func _on_painter_down() -> void:
 	is_click = true
+	Audiomanager.paint(1)
 	$Painter.texture = load("res://sprite/painter pressed.png")
 	$PainterRoll.texture = load("res://sprite/painter roll pressed.png")
 	target_position = get_global_mouse_position()

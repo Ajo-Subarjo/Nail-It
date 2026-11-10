@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var time := 240
 @export var scene_path : String = "res://scene/level_.tscn"
 @onready var main_menu := "res://scene/main_screen.tscn"
 var finish = false
@@ -8,13 +7,13 @@ var finish = false
 
 func _ready() -> void:
 	Audiomanager.setup_audio()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2).timeout
 	GameManager.paused = false
 	#$tutorial.show()
 
 
 func _process(delta: float) -> void:
-	if $painter.get_coverage() * 100 >= 95:
+	if $painter.get_coverage() * 100 >= 93:
 		if !finish:
 			finish = true
 			on_finish()
@@ -23,6 +22,7 @@ func _process(delta: float) -> void:
 func _on_refill_body_entered(body: Node2D) -> void:
 	if body.name == "painter":
 		body.paint_amount = 1000
+		Audiomanager.paint(0.5)
 
 func back_main_menu():
 	var loader: AsyncScene = AsyncScene.new(main_menu,AsyncScene.LoadingOperation.Replace, self)

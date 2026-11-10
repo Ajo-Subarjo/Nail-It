@@ -382,6 +382,7 @@ loop = true
 [node name="Camera" parent="." unique_id=1757026362 instance=ExtResource("10_ri5j0")]
 
 [node name="debug" type="Button" parent="." unique_id=1535836525]
+visible = false
 offset_left = 677.0
 offset_top = 159.0
 offset_right = 778.0

@@ -18,6 +18,7 @@ var back := false
 
 func _ready() -> void:
 	generate_task()
+	await get_tree().create_timer(2).timeout
 	GameManager.paused = false
 
 func _process(delta: float) -> void:
@@ -40,9 +41,11 @@ func _process(delta: float) -> void:
 
 func _on_button_button_down() -> void:
 	click = true
+	Audiomanager.meter_down()
 
 func _on_button_button_up() -> void:
 	click = false
+	Audiomanager.meter_up()
 	var lb = $Lb.duplicate()
 	$Label.add_child(lb)
 
@@ -60,7 +63,7 @@ func _on_button_button_up() -> void:
 		GameManager.level = 5
 		GameManager.update_time()
 		GameManager.completed()
-		#GameManager.
+
 
 
 
@@ -68,6 +71,7 @@ func generate_task():
 	meter = randi_range(50, 120)
 	target_meter = randi_range(10, meter - 15)
 	$Label/endmeter.text = str(meter)
+	$Target.text = str(target_meter)
 	print(target_meter)
 
 func _on_debug_pressed() -> void:

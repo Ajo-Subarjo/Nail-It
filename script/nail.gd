@@ -14,7 +14,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 	if body.power >= 330 and !finish:
 		camera.shake(5)
-		
+		Audiomanager.hammer_hit()
 		hit+= 1
 		position.x -= 20
 		#print("hammer bonk", body.power)

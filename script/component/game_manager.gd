@@ -1,6 +1,6 @@
 extends Node2D
 
-var duration := 90
+var duration := 75
 @export var grad : Gradient
 
 @onready var level_transition := $CanvasLayer/level_transition
@@ -23,10 +23,10 @@ var level := 1
 
 
 var level_times = [
-	{"time": 25.0, "time_left": 25.0},
-	{"time": 10.0, "time_left": 15.0},
-	{"time": 24.0, "time_left": 215.0},
-	{"time": 27.0, "time_left": 3.0}
+	{"time": 8.0, "time_left": 0.0},
+	{"time": 18.0, "time_left": 0.0},
+	{"time": 37.0, "time_left": 0.0},
+	{"time": 46.0, "time_left": 0.0}
 ]
 const level_path = [
 	"res://scene/level_1.tscn",
@@ -43,13 +43,13 @@ func _process(delta: float) -> void:
 	timer_label.text = str(int(timer.time_left))
 	
 	if !paused:
-		timebar.show()
+		$Control.show()
 		timebar.value = timer.time_left
 		rgrad = timer.time_left / timer.wait_time
 		timebar.get_theme_stylebox("fill").bg_color = grad.sample(rgrad)
 		timebar.get_theme_stylebox("fill").shadow_color = grad.sample(rgrad).darkened(0.1)
 	else:
-		timebar.hide()
+		$Control.hide()
 
 	timer.paused = paused
 
@@ -62,8 +62,8 @@ func start_timer():
 
 func _on_button_pressed() -> void:
 	#change_level()
-	#completed()
-	$AnimationPlayer.play("game_over")
+	completed()
+	#$AnimationPlayer.play("game_over")
 	#time_prog()
 	#start_timer()
 
@@ -88,21 +88,20 @@ func completed():
 func time_prog():
 	for i in range(level_times.size()):
 		var lprog = prog.get_child(i)
-		lprog.max_value = duration
+		lprog.max_value = 75
 		var label = lprog.get_child(0)
 		label.text = "---------<"+str(int(level_times[i].time))+"s   level "+str(i+1)
-		var value = past_val + level_times[i]["time"]
-		
+		var value = level_times[i]["time"]
 		var tween = create_tween()
 		tween.set_trans(Tween.TRANS_ELASTIC)
-		tween.tween_property(lprog,"value", value, 2.0)
+		tween.tween_property(lprog,"value", value, 1.0)
 		tween.parallel().tween_method(
 			func(v):
 				var ratio = v / lprog.max_value
 				label.position.y = (lprog.size.y * (1.0-ratio)) - 10.0,
 			lprog.value,
 			value,
-			2.0,
+			1.5,
 		)
 		await tween.finished
 		past_val = value
@@ -114,7 +113,7 @@ func update_time():
 
 
 func change_level():
-	await  get_tree().create_timer(1).timeout
+	await  get_tree().create_timer(0.2).timeout
 	level_transition.show()
 	$AnimationPlayer.play("change_scene")
 
@@ -143,9 +142,14 @@ func change_scene(scene):
 
 
 func _on_tryagain_pressed() -> void:
-	level = 1
+	level = 0
+	$CanvasLayer/win.hide()
+	$CanvasLayer/game_over.hide()
+	$CanvasLayer/level_transition.clear()
 	change_scene(level_path[0])
 
 
 func _on_quit_pressed() -> void:
+	$CanvasLayer/win.hide()
+	$CanvasLayer/game_over.hide()
 	change_scene(main_menu)

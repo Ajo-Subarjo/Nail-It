@@ -8,6 +8,7 @@ var sfx = {
 	}
 
 func _ready() -> void:
+	$bgm.play()
 	setup_audio()
 	
 
@@ -22,6 +23,33 @@ func play(name : String):
 	audio.stream = sfx[name]
 	audio.play()
 
+func hammer_hit():
+	$hammer_hit.play()
+
+func meter_down():
+	$meter.play()
+	await get_tree().create_timer(0.14).timeout
+	$meter.stop()
+
+func meter_up():
+	$meter.play(0.15)
+
+
+func set_bgmvolume(vol):
+	$bgm.volume_db = vol
+
+func paint(pitch):
+	$paint.pitch_scale = pitch
+	$paint.play()
+
+
+func start_chainsaw():
+	$"idle-chainsaw".stop()
+	$chainsaw.play()
+
+func stop_chainsaw():
+	$chainsaw.stop()
+	$"idle-chainsaw".play()
 
 func _play_click():
 	click.stop()

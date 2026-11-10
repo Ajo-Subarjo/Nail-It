@@ -99,6 +99,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_bor6b")
 text = "Play"
 
 [node name="Button2" type="Button" parent="Control/VBoxContainer" unique_id=840257502 groups=["Button"]]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
