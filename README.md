@@ -11,7 +11,8 @@ The goal is simple: complete each challenge as quickly and accurately as possibl
 
 * **Hammer** - Hit the nails before time runs out.
 * **Paint** - Paint the required area of the wall.
-* More mini-games coming soon...
+* **Chainsaw** - Cutting log using chainsaw
+* **Measure Tape** Move the measuring tape
 
 ##  Features
 
@@ -19,7 +20,7 @@ The goal is simple: complete each challenge as quickly and accurately as possibl
 * Short gameplay sessions
 * Simple controls
 * Different challenges and mechanics
-* Lightweight 2D gameplay
+
 
 ##  Built With
 
