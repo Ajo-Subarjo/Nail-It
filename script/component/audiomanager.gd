@@ -51,6 +51,11 @@ func stop_chainsaw():
 	$chainsaw.stop()
 	$"idle-chainsaw".play()
 
+func end_chainsaw():
+	$chainsaw.stop()
+	$"idle-chainsaw".stop() 
+
+
 func _play_click():
 	click.stop()
 	click.play()

@@ -113,7 +113,8 @@ func update_time():
 
 
 func change_level():
-	await  get_tree().create_timer(0.2).timeout
+	if level != 2:
+		await  get_tree().create_timer(0.2).timeout
 	level_transition.show()
 	$AnimationPlayer.play("change_scene")
 

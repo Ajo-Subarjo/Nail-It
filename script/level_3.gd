@@ -45,7 +45,6 @@ func chainsaw_start():
 	chainsaw.play("trigger")
 	chainsaw.speed_scale = 8
 	trigger = true
-	Audiomanager.start_chainsaw()
 	camera.start_shake(1)
 
 
@@ -79,9 +78,9 @@ func _process(delta: float) -> void:
 		heat = heat_curve.sample(t) * 100.0
 
 	if progress_percentage >= 90 and !finish:
+		Audiomanager.end_chainsaw()
 		finish = true
 		trigger = false
-		chainsaw_stop()
 		chainsaw.play("idle")
 		chainsaw.speed_scale = 1
 		camera.stop_shake()

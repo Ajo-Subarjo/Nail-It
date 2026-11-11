@@ -13,10 +13,12 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if $painter.get_coverage() * 100 >= 93:
-		if !finish:
-			finish = true
-			on_finish()
+	if !$painter.get_coverage() * 100 >= 93:
+		return
+	if !finish:
+		return
+	finish = true
+	on_finish()
 
 
 func _on_refill_body_entered(body: Node2D) -> void:
